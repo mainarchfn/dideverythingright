@@ -56,10 +56,8 @@ Output expectations:
 - Call out non-goals and open questions explicitly.
 
 # Objective
-1. Every page should have a small gap at top to add spacing (like landing page)
-2. Admin section should have its own styling we dont want big buttons etc.. here this is purely functional and needs to support managing many posts, categories and page layouts. Do your best right now we will focus on this late
-3. Post category icons should be below the blurb not at the top
-4. Look at every section in each Most used tools for XXX sections and make sure they aren't just linking to a section below it (whats the point) it should be the tool itself as en embedded widget. Make all of these functional (and self-contained) to show the vision (doesnt have to be correct right now)
+1. Bottom of all pages should have a darked site nav - mimic common patterns
+2. Lets at more posts for each category. The bottom section of the categories pages should have the articles listed like the main page does (smaller grid of articles)
 
 # Constraints
 - Keep the overall product vision in tact: a place for retirees to find ways to solve their life problems - a trusted companion with a membership to advanced tools to help them achieve their goals

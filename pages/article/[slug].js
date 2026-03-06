@@ -30,9 +30,9 @@ export default function ArticlePage({ post }) {
   return (
     <Layout title={post.seo.title} description={post.seo.description}>
       <article className="container article stack">
-        <CategoryPill category={post.category} />
         <h1>{post.title}</h1>
         <p className="lede">{post.summary}</p>
+        <CategoryPill category={post.category} />
         <img src={post.heroImage} alt="" aria-hidden="true" className="hero-image" />
         <div className="article-body stack">
           {post.body.map((paragraph, index) => (

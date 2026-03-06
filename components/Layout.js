@@ -37,10 +37,43 @@ export default function Layout({ title, description, children }) {
             </nav>
           </div>
         </header>
-        <main>{children}</main>
-        <footer className="site-footer">
-          <div className="container">
-            <p>Private, practical guidance for retirees. Educational content only.</p>
+        <main className="site-main">{children}</main>
+        <footer className="site-footer" aria-labelledby="footer-heading">
+          <div className="container footer-shell">
+            <section className="footer-brand stack" aria-label="Site description">
+              <h2 id="footer-heading">Did Everything Right</h2>
+              <p>Private, practical guidance for retirees. Educational content only.</p>
+            </section>
+
+            <nav className="footer-nav" aria-label="Footer">
+              <h3>Explore</h3>
+              <ul>
+                <li>
+                  <Link href="/#categories">Categories</Link>
+                </li>
+                <li>
+                  <Link href="/membership">Membership</Link>
+                </li>
+                <li>
+                  <Link href="/newsletter">Newsletter</Link>
+                </li>
+              </ul>
+            </nav>
+
+            <nav className="footer-nav" aria-label="Category links">
+              <h3>Top Categories</h3>
+              <ul>
+                <li>
+                  <Link href="/category/veterans">Veterans</Link>
+                </li>
+                <li>
+                  <Link href="/category/sudden-expenses">Sudden Expenses</Link>
+                </li>
+                <li>
+                  <Link href="/category/health">Health</Link>
+                </li>
+              </ul>
+            </nav>
           </div>
         </footer>
       </div>

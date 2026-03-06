@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Layout from "components/Layout";
 import PostCard from "components/PostCard";
-import ExpenseTrendChart from "components/ExpenseTrendChart";
 import CategoryIcon from "components/CategoryIcon";
+import CategoryToolbox from "components/CategoryToolbox";
 import {
   CATEGORIES,
   CATEGORY_DETAILS,
@@ -69,20 +69,7 @@ export default function CategoryPage({ category, posts, featured, secondary }) {
 
         <section className="panel stack" aria-label="Most used tools for this category">
           <h2>Most used tools for {label.toLowerCase()}</h2>
-          <div className="tool-list">
-            {details?.tools.map((tool) => (
-              <article key={tool.title} className="tool-item">
-                <h3>{tool.title}</h3>
-                <p>{tool.description}</p>
-                <Link href={tool.href}>Open tool</Link>
-              </article>
-            ))}
-          </div>
-          {category === "sudden-expenses" ? (
-            <div id="spending-tool">
-              <ExpenseTrendChart />
-            </div>
-          ) : null}
+          <CategoryToolbox category={category} tools={details?.tools || []} />
         </section>
 
         <section className="panel stack" aria-label="Another urgent read">
@@ -111,9 +98,9 @@ export default function CategoryPage({ category, posts, featured, secondary }) {
 
         <section className="stack" aria-label="All category articles">
           <h2>All {label.toLowerCase()} articles</h2>
-          <div className="card-grid">
+          <div className="card-grid card-grid-compact">
             {posts.map((post) => (
-              <PostCard key={post.slug} post={post} />
+              <PostCard key={post.slug} post={post} compact />
             ))}
           </div>
         </section>

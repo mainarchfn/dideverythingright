@@ -1,0 +1,23 @@
+{
+  "title": "Cancer Visit Decision Notes for Clear Next Steps",
+  "slug": "cancer-visit-decision-notes",
+  "summary": "A simple structure for tracking treatment decisions, side effects, and follow-ups.",
+  "category": "cancer",
+  "publishDate": "2026-02-20",
+  "heroImage": "https://images.unsplash.com/photo-1581595219315-a187dd40c322?auto=format&fit=crop&w=1200&q=80",
+  "body": [
+    "Capture each visit in four sections: treatment plan, side effects, warning signs, and exact follow-up date.",
+    "Write down one unresolved question before leaving so the care team can close information gaps quickly.",
+    "Track how symptoms change day to day, especially after infusions or medication adjustments.",
+    "Use one shared update template for caregivers to avoid repeating complex details multiple times.",
+    "At the next appointment, bring last visit\u2019s notes and review what improved, what worsened, and what must change now."
+  ],
+  "seo": {
+    "title": "Cancer Visit Decision Notes Template",
+    "description": "Organize treatment decisions and follow-up actions with clear cancer visit notes."
+  },
+  "published": true,
+  "embedChart": false,
+  "createdAt": "2026-02-20T09:00:00.000Z",
+  "updatedAt": "2026-02-20T09:00:00.000Z"
+}

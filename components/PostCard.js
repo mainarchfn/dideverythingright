@@ -9,14 +9,14 @@ function formatDate(value) {
   });
 }
 
-export default function PostCard({ post }) {
+export default function PostCard({ post, compact = false }) {
   const readMinutes = Math.max(3, Math.ceil(post.body.join(" ").split(" ").length / 180));
+  const cardClass = compact ? "post-card post-card-compact" : "post-card";
 
   return (
-    <article className="post-card">
+    <article className={cardClass}>
       <img src={post.heroImage} alt={`Illustration for ${post.title}`} />
       <div className="post-card-body">
-        <CategoryPill category={post.category} />
         <p className="post-meta">
           {formatDate(post.publishDate)} | {readMinutes} min read
         </p>
@@ -24,6 +24,7 @@ export default function PostCard({ post }) {
           <Link href={`/article/${post.slug}`}>{post.title}</Link>
         </h3>
         <p>{post.summary}</p>
+        <CategoryPill category={post.category} />
       </div>
     </article>
   );
