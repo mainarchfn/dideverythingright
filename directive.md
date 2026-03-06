@@ -56,26 +56,10 @@ Output expectations:
 - Call out non-goals and open questions explicitly.
 
 # Objective
-Expand this very basic shell there should be common sections you'd expect of a content-based, tool-enhanced site:
-1. A catchy logo design
-2. landing page with the very latest and best content highlight
-3. A gateway into the various categories of the site
-4. 2 "call to action" tools that would be useful to the most amount of users
-5. An explanation of membership and a way to explore more
-
-Each category should link to a category-themed page that
-1. An introduction to the category and what they can find there
-2. Highlight a time-sensitive post like "in 1 month the government will change tax laws" - make this grounded in reality
-3. Highlights the most important articles for that category
-4. The most used tools/widgets for that category
-5. A time-sensitive article
-6. Signup deal for membership
-
-Expand the posts to show more content to get a feel of the overall experience, pacing etc...
-
-This represents a perfect mix of information, guidance, widgets/tools and whats truly pressing
-
-We also need to pick a great readable font that fits this theme
+1. Every page should have a small gap at top to add spacing (like landing page)
+2. Admin section should have its own styling we dont want big buttons etc.. here this is purely functional and needs to support managing many posts, categories and page layouts. Do your best right now we will focus on this late
+3. Post category icons should be below the blurb not at the top
+4. Look at every section in each Most used tools for XXX sections and make sure they aren't just linking to a section below it (whats the point) it should be the tool itself as en embedded widget. Make all of these functional (and self-contained) to show the vision (doesnt have to be correct right now)
 
 # Constraints
 - Keep the overall product vision in tact: a place for retirees to find ways to solve their life problems - a trusted companion with a membership to advanced tools to help them achieve their goals
@@ -90,11 +74,7 @@ We also need to pick a great readable font that fits this theme
 - styles
 
 # Acceptance Criteria
-1. Expanded site content
-2. Homepage redesign
-3. Category page redesign
-4. Professional logo
-5. New font
+1. All objectives are implemented
 
 # Validation
 - Run sanity check

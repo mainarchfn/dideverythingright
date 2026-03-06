@@ -23,12 +23,13 @@ export default function Hero({ featuredPost }) {
             injuries, and veterans support.
           </p>
           <div className="hero-actions">
-            <Link className="button-link" href="/subscribe">
-              Explore membership tools
+            <Link className="button-link cta-membership" href="/membership">
+              Membership plans
             </Link>
-            <a href="#categories" className="ghost-link">
-              Browse categories
-            </a>
+            <Link className="button-link cta-newsletter" href="/newsletter">
+              Join the free newsletter
+            </Link>
+            <a href="#categories" className="ghost-link">Browse categories</a>
           </div>
         </div>
         {featuredPost ? (

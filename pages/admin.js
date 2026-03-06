@@ -60,20 +60,20 @@ export default function AdminPage({ initialPosts }) {
   const [posts, setPosts] = useState(initialPosts);
   const [selectedSlug, setSelectedSlug] = useState("");
   const [form, setForm] = useState(blankPost);
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Ready");
 
   const activePost = useMemo(() => posts.find((post) => post.slug === selectedSlug), [posts, selectedSlug]);
 
   function handleEdit(post) {
     setSelectedSlug(post.slug);
     setForm(postToForm(post));
-    setStatus(`Editing ${post.title}`);
+    setStatus(`Editing: ${post.title}`);
   }
 
   function resetForm() {
     setSelectedSlug("");
     setForm(blankPost);
-    setStatus("Ready for new draft");
+    setStatus("Creating new draft");
   }
 
   async function refreshPosts() {
@@ -102,7 +102,7 @@ export default function AdminPage({ initialPosts }) {
 
     setSelectedSlug(data.post.slug);
     setForm(postToForm(data.post));
-    setStatus("Saved. If published, rebuild to include in static pages.");
+    setStatus("Saved. Rebuild to publish static pages.");
     await refreshPosts();
   }
 
@@ -122,7 +122,7 @@ export default function AdminPage({ initialPosts }) {
       resetForm();
     }
 
-    setStatus("Post deleted");
+    setStatus("Deleted");
     await refreshPosts();
   }
 
@@ -131,60 +131,79 @@ export default function AdminPage({ initialPosts }) {
   }
 
   return (
-    <Layout title="Writer CMS | Did Everything Right">
+    <Layout title="Content CMS | Did Everything Right">
       <section className="container stack admin-layout">
-        <h1>Writer CMS</h1>
-        <p>Create, edit, preview, categorize, and publish posts without touching code.</p>
-        <p className="small-note">{status}</p>
+        <div className="split-row">
+          <div>
+            <h1>Content CMS</h1>
+            <p>Manage posts, draft workflow, and page sections with a standard editorial flow.</p>
+          </div>
+          <p className="status-badge" aria-live="polite">{status}</p>
+        </div>
 
         <div className="admin-columns">
-          <aside className="panel stack" aria-label="Existing posts">
-            <h2>Post library</h2>
-            <button type="button" onClick={resetForm}>
-              New draft
-            </button>
+          <aside className="panel stack" aria-label="Post library">
+            <div className="split-row">
+              <h2>Post library</h2>
+              <button type="button" onClick={resetForm} className="secondary-action">
+                New draft
+              </button>
+            </div>
             {posts.map((post) => (
-              <div key={post.slug} className="list-item">
-                <button type="button" onClick={() => handleEdit(post)}>
+              <article key={post.slug} className="list-item post-row">
+                <button type="button" onClick={() => handleEdit(post)} className="link-like">
                   {post.title}
                 </button>
-                <span>{post.published ? "Published" : "Draft"}</span>
+                <p className="small-note">/{post.slug}</p>
+                <p className={`small-note ${post.published ? "status-live" : "status-draft"}`}>
+                  {post.published ? "Published" : "Draft"}
+                </p>
                 <button type="button" className="danger" onClick={() => removePost(post.slug)}>
                   Delete
                 </button>
-              </div>
+              </article>
             ))}
           </aside>
 
-          <form className="panel stack" onSubmit={savePost}>
+          <form className="panel stack" onSubmit={savePost} aria-label="Post editor form">
             <h2>{selectedSlug ? "Edit post" : "Create post"}</h2>
 
-            <label htmlFor="title">Title</label>
-            <input id="title" value={form.title} onChange={(e) => updateField("title", e.target.value)} required />
-
-            <label htmlFor="slug">Slug</label>
-            <input id="slug" value={form.slug} onChange={(e) => updateField("slug", e.target.value)} required />
+            <div className="admin-field-grid">
+              <div>
+                <label htmlFor="title">Title</label>
+                <input id="title" value={form.title} onChange={(e) => updateField("title", e.target.value)} required />
+              </div>
+              <div>
+                <label htmlFor="slug">Slug</label>
+                <input id="slug" value={form.slug} onChange={(e) => updateField("slug", e.target.value)} required />
+              </div>
+            </div>
 
             <label htmlFor="summary">Summary</label>
             <textarea id="summary" value={form.summary} onChange={(e) => updateField("summary", e.target.value)} required />
 
-            <label htmlFor="category">Category</label>
-            <select id="category" value={form.category} onChange={(e) => updateField("category", e.target.value)}>
-              {CATEGORIES.map((category) => (
-                <option key={category} value={category}>
-                  {CATEGORY_LABELS[category]}
-                </option>
-              ))}
-            </select>
-
-            <label htmlFor="publishDate">Publish date</label>
-            <input
-              id="publishDate"
-              type="date"
-              value={form.publishDate}
-              onChange={(e) => updateField("publishDate", e.target.value)}
-              required
-            />
+            <div className="admin-field-grid">
+              <div>
+                <label htmlFor="category">Category</label>
+                <select id="category" value={form.category} onChange={(e) => updateField("category", e.target.value)}>
+                  {CATEGORIES.map((category) => (
+                    <option key={category} value={category}>
+                      {CATEGORY_LABELS[category]}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="publishDate">Publish date</label>
+                <input
+                  id="publishDate"
+                  type="date"
+                  value={form.publishDate}
+                  onChange={(e) => updateField("publishDate", e.target.value)}
+                  required
+                />
+              </div>
+            </div>
 
             <label htmlFor="heroImage">Hero image URL</label>
             <input
@@ -195,46 +214,52 @@ export default function AdminPage({ initialPosts }) {
             />
 
             <label htmlFor="body">Body content (one paragraph per line)</label>
-            <textarea id="body" value={form.body} onChange={(e) => updateField("body", e.target.value)} rows={8} required />
+            <textarea id="body" value={form.body} onChange={(e) => updateField("body", e.target.value)} rows={10} required />
 
-            <label htmlFor="seoTitle">SEO title</label>
-            <input
-              id="seoTitle"
-              value={form.seoTitle}
-              onChange={(e) => updateField("seoTitle", e.target.value)}
-              required
-            />
+            <div className="admin-field-grid">
+              <div>
+                <label htmlFor="seoTitle">SEO title</label>
+                <input
+                  id="seoTitle"
+                  value={form.seoTitle}
+                  onChange={(e) => updateField("seoTitle", e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="seoDescription">SEO description</label>
+                <textarea
+                  id="seoDescription"
+                  value={form.seoDescription}
+                  onChange={(e) => updateField("seoDescription", e.target.value)}
+                  required
+                />
+              </div>
+            </div>
 
-            <label htmlFor="seoDescription">SEO description</label>
-            <textarea
-              id="seoDescription"
-              value={form.seoDescription}
-              onChange={(e) => updateField("seoDescription", e.target.value)}
-              required
-            />
+            <div className="check-row">
+              <label className="check-row">
+                <input
+                  type="checkbox"
+                  checked={form.embedChart}
+                  onChange={(e) => updateField("embedChart", e.target.checked)}
+                />
+                Embed chart in article
+              </label>
+              <label className="check-row">
+                <input
+                  type="checkbox"
+                  checked={form.published}
+                  onChange={(e) => updateField("published", e.target.checked)}
+                />
+                Publish this post
+              </label>
+            </div>
 
-            <label className="check-row">
-              <input
-                type="checkbox"
-                checked={form.embedChart}
-                onChange={(e) => updateField("embedChart", e.target.checked)}
-              />
-              Embed chart in article
-            </label>
-
-            <label className="check-row">
-              <input
-                type="checkbox"
-                checked={form.published}
-                onChange={(e) => updateField("published", e.target.checked)}
-              />
-              Publish this post
-            </label>
-
-            <button type="submit">Save post</button>
+            <button type="submit" className="cta-membership">Save changes</button>
           </form>
 
-          <aside className="panel stack" aria-label="Preview">
+          <aside className="panel stack" aria-label="Post preview">
             <h2>Preview</h2>
             <p><strong>{form.title || "Untitled"}</strong></p>
             <p>{form.summary || "Summary preview"}</p>

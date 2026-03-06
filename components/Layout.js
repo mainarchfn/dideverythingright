@@ -25,10 +25,13 @@ export default function Layout({ title, description, children }) {
                   <Link href="/#categories">Categories</Link>
                 </li>
                 <li>
-                  <Link href="/subscribe">Membership</Link>
+                  <Link href="/membership">Membership</Link>
                 </li>
                 <li>
-                  <Link href="/admin">Writer CMS</Link>
+                  <Link href="/newsletter">Newsletter</Link>
+                </li>
+                <li>
+                  <Link href="/admin">Content CMS</Link>
                 </li>
               </ul>
             </nav>

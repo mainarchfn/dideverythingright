@@ -6,6 +6,7 @@ import PostCard from "components/PostCard";
 import PreferencePicker from "components/PreferencePicker";
 import ExpenseTrendChart from "components/ExpenseTrendChart";
 import AdPlaceholder from "components/AdPlaceholder";
+import CategoryIcon from "components/CategoryIcon";
 import { CATEGORIES, CATEGORY_DETAILS, CATEGORY_LABELS } from "lib/constants";
 import { getAllPosts, getPostBySlug } from "lib/posts";
 
@@ -65,7 +66,10 @@ export default function Home({ posts, categoryPreview, featuredPost, urgentPost 
           <div className="gateway-grid">
             {categoryPreview.map((category) => (
               <article key={category.key} className="gateway-card panel">
-                <h3>{category.label}</h3>
+                <h3 className="category-title-row">
+                  <CategoryIcon category={category.key} />
+                  <span>{category.label}</span>
+                </h3>
                 <p>{category.intro}</p>
                 {category.latest ? (
                   <p className="small-note">Latest: {category.latest.title}</p>
@@ -100,8 +104,8 @@ export default function Home({ posts, categoryPreview, featuredPost, urgentPost 
         <section aria-label="Recommended articles" className="stack">
           <div className="split-row">
             <h2>Recommended reading</h2>
-            <Link className="button-link" href="/subscribe">
-              Start membership
+            <Link className="button-link cta-membership" href="/membership">
+              See membership plans
             </Link>
           </div>
           <div className="card-grid">
@@ -119,11 +123,11 @@ export default function Home({ posts, categoryPreview, featuredPost, urgentPost 
           </p>
           <p className="small-note">Current offer: first 30 days of membership are free while tools are in rollout.</p>
           <div className="hero-actions">
-            <Link className="button-link" href="/subscribe">
+            <Link className="button-link cta-membership" href="/membership">
               View membership options
             </Link>
-            <Link href="/category/health" className="ghost-link">
-              Explore an example category
+            <Link href="/newsletter" className="button-link cta-newsletter">
+              Join the free newsletter
             </Link>
           </div>
         </section>

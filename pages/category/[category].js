@@ -2,6 +2,7 @@ import Link from "next/link";
 import Layout from "components/Layout";
 import PostCard from "components/PostCard";
 import ExpenseTrendChart from "components/ExpenseTrendChart";
+import CategoryIcon from "components/CategoryIcon";
 import {
   CATEGORIES,
   CATEGORY_DETAILS,
@@ -41,7 +42,10 @@ export default function CategoryPage({ category, posts, featured, secondary }) {
       <section className="container category-page stack">
         <header className="category-hero panel stack">
           <p className="eyebrow">{label} support center</p>
-          <h1>{label}</h1>
+          <h1 className="category-title-row">
+            <CategoryIcon category={category} decorative={false} />
+            <span>{label}</span>
+          </h1>
           <p>{details?.intro}</p>
           <p className="small-note">What you will find: {details?.whatToFind}</p>
         </header>
@@ -70,10 +74,15 @@ export default function CategoryPage({ category, posts, featured, secondary }) {
               <article key={tool.title} className="tool-item">
                 <h3>{tool.title}</h3>
                 <p>{tool.description}</p>
+                <Link href={tool.href}>Open tool</Link>
               </article>
             ))}
           </div>
-          {category === "sudden-expenses" ? <ExpenseTrendChart /> : null}
+          {category === "sudden-expenses" ? (
+            <div id="spending-tool">
+              <ExpenseTrendChart />
+            </div>
+          ) : null}
         </section>
 
         <section className="panel stack" aria-label="Another urgent read">
@@ -95,7 +104,7 @@ export default function CategoryPage({ category, posts, featured, secondary }) {
             Join now for premium templates, deadline reminders, and printable call scripts tailored to this category.
           </p>
           <p className="small-note">Deal: first month free, then member pricing begins.</p>
-          <Link className="button-link" href="/subscribe">
+          <Link className="button-link cta-membership" href="/membership">
             Claim the membership offer
           </Link>
         </section>
