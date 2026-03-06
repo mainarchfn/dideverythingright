@@ -1,0 +1,26 @@
+{
+  "title": "Annual Health Review Made Simple",
+  "slug": "annual-health-review-made-simple",
+  "summary": "Prepare for checkups with a one-page list of symptoms, goals, and medication updates.",
+  "category": "health",
+  "publishDate": "2026-02-18",
+  "heroImage": "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=1200&q=80",
+  "body": [
+    "Start one week before your annual visit by writing your top three concerns in plain language. Opening with your priorities helps the appointment stay focused and useful.",
+    "Bring all medications and supplements, including over-the-counter products and recent dose changes. A complete list prevents duplicate prescriptions and harmful interactions.",
+    "Track symptoms that changed in the last three months, including sleep, appetite, pain, memory, balance, and mood. Dates matter because they help your clinician spot patterns.",
+    "Prepare one page with specialist visits, emergency visits, and test results since your last annual review. This saves time and reduces the chance that important context is missed.",
+    "Ask for a preventive care check: vaccines, bone health, blood pressure targets, vision, hearing, and cancer screening timelines. Confirm what is due now versus later this year.",
+    "If cost is a concern, ask directly whether lower-cost medication alternatives are appropriate. Price barriers are common and discussing them early improves adherence.",
+    "Before leaving, repeat back your plan: medication changes, next tests, and who you should contact for questions. This quick teach-back reduces confusion once you get home.",
+    "End with one question: what changes should trigger a call before my next appointment? Put those warning signs in writing and keep them on your refrigerator."
+  ],
+  "seo": {
+    "title": "Retiree Annual Health Visit Checklist",
+    "description": "A simple and respectful checklist for annual health appointments."
+  },
+  "published": true,
+  "embedChart": false,
+  "createdAt": "2026-02-18T10:00:00.000Z",
+  "updatedAt": "2026-02-18T10:00:00.000Z"
+}

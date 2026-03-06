@@ -1,1 +1,8 @@
-directive.md
+node_modules/
+.next/
+out/
+dist/
+coverage/
+.env*
+.DS_Store
+*.log
